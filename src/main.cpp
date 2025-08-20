@@ -5,19 +5,20 @@ using namespace geode::prelude;
 class $modify(MyPauseLayer, PauseLayer) {
 	void customSetup() {
 		PauseLayer::customSetup();
-		auto rightSideMenu = getChildByID("right-side-menu");
-		if (!rightSideMenu) rightSideMenu = getChildByID("right-button-menu");
-		if (!rightSideMenu) rightSideMenu = getChildByID("left-side-menu");
-		if (!rightSideMenu) rightSideMenu = getChildByID("left-button-menu");
-		if (!rightSideMenu) return;
+		auto buttonMenu = getChildByID("left-side-menu");
+		if (!buttonMenu) buttonMenu = getChildByID("left-button-menu");
+		if (!buttonMenu) buttonMenu = getChildByID("right-side-menu");
+		if (!buttonMenu) buttonMenu = getChildByID("right-button-menu");
+		if (!buttonMenu) return;
+		auto rstSprite = CCSprite::createWithSpriteFrameName("GJ_updateBtn_001.png");
+		rstSprite->setScale(.7f);
 		auto restartButton = CCMenuItemSpriteExtra::create(
-			CCSprite::createWithSpriteFrameName("GJ_updateBtn_001.png"),
-			this, menu_selector(MyPauseLayer::onEchofallenn)
+			rstSprite, this, menu_selector(MyPauseLayer::onEchofallenn)
 		);
 		restartButton->setID("echofallenn's-restart-button"_spr);
 		restartButton->setZOrder(INT_MIN / 2);
-		rightSideMenu->addChild(restartButton);
-		rightSideMenu->updateLayout();
+		buttonMenu->addChild(restartButton);
+		buttonMenu->updateLayout();
 	}
 	void onEchofallenn(CCObject* sender) {
 		if (CCScene::get()->getChildByID("echofallenn's-restart-popup"_spr)) return;
@@ -26,11 +27,7 @@ class $modify(MyPauseLayer, PauseLayer) {
 			"Are you sure you want to <cg>restart your game</c>?",
 			"Cancel", "Yes",
 			[](auto, bool btn2) {
-				if (!btn2) return;
-				if (auto pl = PlayLayer::get(); pl) pl->onQuit();
-				Loader::get()->queueInMainThread([](){
-					game::restart();
-				});
+				if (btn2) game::restart();
 			}
 		)->setID("echofallenn's-restart-popup"_spr);
 	}
