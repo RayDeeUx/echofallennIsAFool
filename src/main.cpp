@@ -21,13 +21,27 @@ class $modify(MyPauseLayer, PauseLayer) {
 		buttonMenu->updateLayout();
 	}
 	void onEchofallenn(CCObject* sender) {
-		if (CCScene::get()->getChildByID("echofallenn's-restart-popup"_spr)) return;
+		if (CCScene::get()->getChildByID("echofallenn's-restart-popup"_spr) || !PlayLayer::get()) return;
 		geode::createQuickPopup(
 			"Restart Game",
 			"Are you sure you want to <cg>restart your game</c>?",
 			"Cancel", "Yes",
 			[](auto, bool btn2) {
-				if (btn2) game::restart();
+				auto pl = PlayLayer::get();
+				if (btn2 && pl) pl->onQuit();
+				Loader::get()->queueInMainThread([](){
+					Loader::get()->queueInMainThread([](){
+						Loader::get()->queueInMainThread([](){
+							Loader::get()->queueInMainThread([](){
+								Loader::get()->queueInMainThread([](){
+									Loader::get()->queueInMainThread([](){
+										geode::utils::game::restart();
+									});
+								});
+							});
+						});
+					});
+				});
 			}
 		)->setID("echofallenn's-restart-popup"_spr);
 	}
