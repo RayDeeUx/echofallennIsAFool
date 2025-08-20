@@ -6,6 +6,9 @@ class $modify(MyPauseLayer, PauseLayer) {
 	void customSetup() {
 		PauseLayer::customSetup();
 		auto rightSideMenu = getChildByID("right-side-menu");
+		if (!rightSideMenu) rightSideMenu = getChildByID("right-button-menu");
+		if (!rightSideMenu) rightSideMenu = getChildByID("left-side-menu");
+		if (!rightSideMenu) rightSideMenu = getChildByID("left-button-menu");
 		if (!rightSideMenu) return;
 		auto restartButton = CCMenuItemSpriteExtra::create(
 			CCSprite::createWithSpriteFrameName("GJ_updateBtn_001.png"),

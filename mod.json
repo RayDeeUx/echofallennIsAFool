@@ -10,5 +10,8 @@
 	"name": "echofallennIsAFool",
 	"version": "v1.0.0",
 	"developer": "RayDeeUx",
-	"description": "echofallenn is a fool."
+	"description": "echofallenn is a fool.",
+	"dependencies": {
+		"geode.node-ids": ">=1.21.0"
+	}
 }
