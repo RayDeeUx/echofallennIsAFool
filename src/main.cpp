@@ -24,7 +24,7 @@ class $modify(MyPauseLayer, PauseLayer) {
 		if (CCScene::get()->getChildByID("echofallenn's-restart-popup"_spr) || !PlayLayer::get()) return;
 		geode::createQuickPopup(
 			"Restart Game",
-			"Are you sure you want to <cg>restart your game</c>?",
+			"Are you sure you want to <cg>restart your game</c>?\nThere <c_>WILL</c> be a slight delay.",
 			"Cancel", "Yes",
 			[](auto, bool btn2) {
 				auto pl = PlayLayer::get();
