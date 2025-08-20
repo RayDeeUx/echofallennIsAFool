@@ -25,7 +25,7 @@ class $modify(MyPauseLayer, PauseLayer) {
 			[](auto, bool btn2) {
 				if (!btn2) return;
 				if (auto pl = PlayLayer::get(); pl) pl->onQuit();
-				Loader::get()->queueInMainLoader([](){
+				Loader::get()->queueInMainThread([](){
 					game::restart();
 				});
 			}
