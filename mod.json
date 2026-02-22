@@ -1,17 +1,17 @@
 {
-	"geode": "4.4.0",
+	"geode": "5.0.0-beta.4",
 	"gd": {
-		"win": "2.2074",
-		"mac": "2.2074",
-		"ios": "2.2074",
-		"android": "2.2074"
+		"win": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081",
+		"android": "2.2081"
 	},
 	"id": "raydeeux.echofallennisafool",
 	"name": "echofallennIsAFool",
-	"version": "v1.0.0",
+	"version": "v1.0.1",
 	"developer": "RayDeeUx",
 	"description": "echofallenn is a fool.",
 	"dependencies": {
-		"geode.node-ids": ">=1.21.0"
+		"geode.node-ids": ">=1.22.0"
 	}
 }
