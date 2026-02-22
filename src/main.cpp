@@ -35,7 +35,7 @@ class $modify(MyPauseLayer, PauseLayer) {
 							Loader::get()->queueInMainThread([](){
 								Loader::get()->queueInMainThread([](){
 									Loader::get()->queueInMainThread([](){
-										geode::utils::game::restart();
+										geode::utils::game::restart(true);
 									});
 								});
 							});
